@@ -11,5 +11,8 @@ export class MainPage implements OnInit {
 
   ngOnInit() {
   }
-
+  play = true;
+  button(){
+    this.play = false;
+  }
 }

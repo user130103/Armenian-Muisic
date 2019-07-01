@@ -8,8 +8,8 @@
 	<div class="main">
 		<div class="first-section">
 
-			<div class="maracas">
-				<button (click)="petros = !petros"> button</button>
+			<div class="maracas" (click)="petros = !petros">
+
 				<div class="maracas-gif" *ngIf="petros, else play_2">
 					<img src="img/maracas.gif" height="120" width="120">
 				</div>
@@ -21,8 +21,8 @@
 				</ng-template>
 			</div>
 
-			<div class="guitar">
-				<button (click)="hripsime = !hripsime"> button</button>
+			<div class="guitar" (click)="hripsime = !hripsime">
+
 				<div class="guitar-gif" *ngIf="hripsime, else play_3">
 					<img src="img/guitar.gif" height="120" width="120">
 				</div>
@@ -33,12 +33,12 @@
 				</ng-template>
 			</div>
 
-			<div class="drums">
-				<!-- <button (click)="filya = !filya"> button</button> -->
+			<div class="drums" (click)="filya = !filya">
+
 				<!-- <div class="drums-png">
 					<img src="img/drums.png" height="120" width="120">
 				</div> -->
-				<div class="dancer-gif" (click)="filya = !filya" *ngIf="filya, else play_4">
+				<div class="dancer-gif" *ngIf="filya, else play_4">
 					<img src="img/dancer.gif" height="120" width="120">
 				</div>
 
@@ -48,58 +48,72 @@
 					</div>
 				</ng-template>
 
-				<div class="play">
-					<i class="fas fa-play-circle"></i>
+			</div>
+			<div class="play" >
+				<img src="img/play.jpg" height="120" width="120">
+			</div>			
+		</div>
+		<div class="second-container">
+			<div class="part_first">
+				<div class="_1st">
+					<div class="rotate-square rs1"></div>
+					<div class="rotate-square rs2"></div>
+					<div class="rotate-square rs3"></div>
+					<div class="rotate-square rs4"></div>
+
+				</div>
+				<div class="_2nd">
+					<div class="square sq1"></div>
+					<div class="square sq2"></div>
+					<div class="square sq3"></div>
+					<div class="square sq4"></div>
+				</div>
+				<div class="_3th">
+					<div class="circle cl1"></div>
+					<div class="circle cl2"></div>
+					<div class="circle cl3"></div>
+					<div class="circle cl4"></div>
+				</div>
+				<div class="_4th">
+
 				</div>
 			</div>
-			<div class="second-container">
-				<div class="part_first">
-					<div class="_1st">
-						<div class="rotate-square rs1"></div>
-						<div class="rotate-square rs2"></div>
-						<div class="rotate-square rs3"></div>
-						<div class="rotate-square rs4"></div>
-
-					</div>
-					<div class="_2nd">
-						<div class="square sq1"></div>
-						<div class="square sq2"></div>
-						<div class="square sq3"></div>
-						<div class="square sq4"></div>
-					</div>
-					<div class="_3th">
-						<div class="circle cl1"></div>
-						<div class="circle cl2"></div>
-						<div class="circle cl3"></div>
-						<div class="circle cl4"></div>
-					</div>
-					<div class="_4th">
-
-					</div>
+			<div class="part_second">
+				<div class="_1st">
+					<div class="rotate-square rs5"></div>
+					<div class="rotate-square rs6"></div>
+					<div class="rotate-square rs7"></div>
+					<div class="rotate-square rs8"></div>
 				</div>
-				<div class="part_second">
-					<div class="_1st">
-						<div class="rotate-square rs5"></div>
-						<div class="rotate-square rs6"></div>
-						<div class="rotate-square rs7"></div>
-						<div class="rotate-square rs8"></div>
-					</div>
-					<div class="_2nd">
-						<div class="square sq5"></div>
-						<div class="square sq6"></div>
-						<div class="square sq7"></div>
-						<div class="square sq8"></div>
-					</div>
-					<div class="_3th">
-						<div class="circle cl5"></div>
-						<div class="circle cl6"></div>
-						<div class="circle cl7"></div>
-						<div class="circle cl8"></div>
-					</div>
-					<div class="_4th">
-
-					</div>
+				<div class="_2nd">
+					<div class="square sq5"></div>
+					<div class="square sq6"></div>
+					<div class="square sq7"></div>
+					<div class="square sq8"></div>
 				</div>
+				<div class="_3th">
+					<div class="circle cl5"></div>
+					<div class="circle cl6"></div>
+					<div class="circle cl7"></div>
+					<div class="circle cl8"></div>
+				</div>
+				<div class="_4th">
+
+				</div>
+			</div>
+			
+		</div>
+		<div class="third-container">
+			<div class="_5th">
+				<div class="astxik">					
+				</div>
+			</div>
+			<div class="_6th">
+				<div class="triangle">
+				</div>	
+			</div>
+			<div class="_7th">
+				
 			</div>
 		</div>
 	</div>

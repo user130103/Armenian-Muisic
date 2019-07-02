@@ -30,6 +30,13 @@
                 "input": "src/app/main/img",
                 "output": "img"
               },
+
+              {
+                "glob": "**/*",
+                "input": "src/app/main/beat1",
+                "output": "./mp3"
+              },
+              
               {
                 "glob": "**/*.svg",
                 "input": "node_modules/ionicons/dist/ionicons/svg",

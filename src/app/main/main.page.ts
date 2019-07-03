@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ɵConsole } from '@angular/core';
 import { log } from 'util';
 declare var Tone: any;
 @Component({
@@ -10,28 +10,29 @@ export class Beatbox {
   constructor() {
 
   }
-  sounds = {
-    sound1: new Tone.Player("./mp3/top_1.mp3").toMaster(),
-    sound2: new Tone.Player("./mp3/top_2.mp3").toMaster(),
-    sound3: new Tone.Player("./mp3/top_3.mp3").toMaster(),
-    sound4: new Tone.Player("./mp3/top_4.mp3").toMaster(),
-    sound5: new Tone.Player("./mp3/middle_1.mp3").toMaster(),
-    sound6: new Tone.Player("./mp3/middle_2.mp3").toMaster(),
-    sound7: new Tone.Player("./mp3/middle_3.mp3").toMaster(),
-    sound8: new Tone.Player("./mp3/middle_4.mp3").toMaster(),
-    sound9: new Tone.Player("./mp3/bottom_1.mp3").toMaster(),
-    sound10: new Tone.Player("./mp3/bottom_2.mp3").toMaster(),
-    sound11: new Tone.Player("./mp3/bottom_3.mp3").toMaster(),
-    sound12: new Tone.Player("./mp3/bottom_4.mp3").toMaster(),
-    sound13: new Tone.Player("./mp3/horns.mp3").toMaster(),
-    sound14: new Tone.Player("./mp3/guitarron.mp3").toMaster()
-  }
-  Debil_vardan(sound) {
-    Tone.context.resume().then(() => { this.sounds[sound].start() });
-  }
+  // sounds = {
+  //   sound1: new Tone.Player("./mp3/top_1.mp3").toMaster(),
+  //   sound2: new Tone.Player("./mp3/top_2.mp3").toMaster(),
+  //   sound3: new Tone.Player("./mp3/top_3.mp3").toMaster(),
+  //   sound4: new Tone.Player("./mp3/top_4.mp3").toMaster(),
+  //   sound5: new Tone.Player("./mp3/middle_1.mp3").toMaster(),
+  //   sound6: new Tone.Player("./mp3/middle_2.mp3").toMaster(),
+  //   sound7: new Tone.Player("./mp3/middle_3.mp3").toMaster(),
+  //   sound8: new Tone.Player("./mp3/middle_4.mp3").toMaster(),
+  //   sound9: new Tone.Player("./mp3/bottom_1.mp3").toMaster(),
+  //   sound10: new Tone.Player("./mp3/bottom_2.mp3").toMaster(),
+  //   sound11: new Tone.Player("./mp3/bottom_3.mp3").toMaster(),
+  //   sound12: new Tone.Player("./mp3/bottom_4.mp3").toMaster(),
+  //   sound13: new Tone.Player("./mp3/horns.mp3").toMaster(),
+  //   sound14: new Tone.Player("./mp3/guitarron.mp3").toMaster()
+  // }
+  // Debil_vardan(sound) {
+  //   Tone.context.resume().then(() => { this.sounds[sound].start() });
+  // }
+
   objectKeys = Object.keys;
   tones = {
-    kick: {
+    first: {
       exp: {
         '1': false,
         '2': false,
@@ -44,7 +45,7 @@ export class Beatbox {
       }, 
       sounds: new Tone.Player("./mp3/top_1.mp3").toMaster()
     },
-    snare: {
+    second: {
       exp: {
         '1': false,
         '2': false,
@@ -57,8 +58,7 @@ export class Beatbox {
       },
       sound: new Tone.Player("./mp3/middle_1.mp3").toMaster()
     },
-  
-    shaker: {
+    third: {
       exp: {
         '1': false,
         '2': false,
@@ -73,25 +73,48 @@ export class Beatbox {
     },
   }
   ind = { count: 0 };
-  ngOnInit() {
+  playbutton = false;
+  playInterval;
+
+
+  
+  play() {  
+  this.playbutton = !this.playbutton;
+  console.log(this.playbutton+ "++++++++++++++++++++");
     let ind = this.ind;
     let step = this.ind.count % 4;
     let tones = this.tones;
-    Tone.Transport.scheduleRepeat(function () { repeat(); }, "8n");
-    Tone.Transport.start();
+   let pl = this.playbutton
+   let clInt = this.playInterval
     function repeat() {
+      if(pl == false){
+        clearInterval(clInt)
+        }
       for (let tone in tones) {
         if (ind.count == 8) ind.count = 0;
         let currTone = tones[tone];
         let count = +"1" + ind.count;
+        console.log(currTone.exp[count])
         if (currTone.exp[count]) {
           Tone.context.resume().then(() => {
             currTone.sound.start();
           })
         }
       }
-      setTimeout(() => { ind.count++ }, 0);
+     setTimeout(() => { ind.count++ }, 0);
+
     }
-    setInterval(() => { repeat(); }, 500)
+  
+
+    this.playInterval = setInterval(repeat,500);
+
+
+
+    // myVar = setInterval(() => { repeat(); }, 500);
+    // if(this.playbutton = false){
+    //   clearInterval(myVar);
+    // }
   }
+  
 }
+
